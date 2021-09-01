@@ -26,8 +26,15 @@ export default function App() {
   function updateQuantity(sku, quantity) {
     console.log(sku, quantity);
     //   setcount(quantity);
+
     setCart((items) => {
-      return items.map((i) => (i.sku === sku ? { ...i, quantity } : i));
+      return quantity === 0
+        ? items.filter((i) => i.sku !== sku)
+        : items.map((i) => (i.sku === sku ? { ...i, quantity } : i));
+      // if (quantity === 0) {
+      //   return items.filter((i) => i.sku !== sku);
+      // }
+      // return items.map((i) => (i.sku === sku ? { ...i, quantity } : i));
     });
   }
   return (
