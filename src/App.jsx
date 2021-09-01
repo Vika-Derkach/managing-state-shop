@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Cart from "./Cart";
@@ -7,8 +7,17 @@ import Footer from "./Footer";
 import Header from "./Header";
 import Products from "./Products";
 export default function App() {
-  const [cart, setCart] = useState([]);
-  const [count, setcount] = useState(1);
+  const [cart, setCart] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem("cart")) ?? [];
+    } catch {
+      console.error("The cart could not be parsed into JSON.");
+      return [];
+    }
+  });
+
+  useEffect(() => localStorage.setItem("cart", JSON.stringify(cart)), [cart]);
+
   function addToCart(id, sku) {
     setCart((items) => {
       const itemInCart = items.find((i) => i.sku === sku);
@@ -23,6 +32,7 @@ export default function App() {
       }
     });
   }
+
   function updateQuantity(sku, quantity) {
     console.log(sku, quantity);
     //   setcount(quantity);
