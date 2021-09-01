@@ -48,6 +48,9 @@ export default function App() {
       // return items.map((i) => (i.sku === sku ? { ...i, quantity } : i));
     });
   }
+  function emptyCart() {
+    setCart([]);
+  }
   return (
     <>
       <div className="content">
@@ -64,7 +67,10 @@ export default function App() {
               path="/:category/:id"
               element={<Detail addToCart={addToCart} />}
             />
-            <Route path="/checkout" element={<Checkout cart={cart} />} />
+            <Route
+              path="/checkout"
+              element={<Checkout cart={cart} emptyCart={emptyCart} />}
+            />
           </Routes>
         </main>
       </div>
