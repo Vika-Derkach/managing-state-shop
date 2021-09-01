@@ -8,7 +8,7 @@ import Header from "./Header";
 import Products from "./Products";
 export default function App() {
   const [cart, setCart] = useState([]);
-
+  const [count, setcount] = useState(1);
   function addToCart(id, sku) {
     setCart((items) => {
       const itemInCart = items.find((i) => i.sku === sku);
@@ -23,7 +23,13 @@ export default function App() {
       }
     });
   }
-
+  function updateQuantity(sku, quantity) {
+    console.log(sku, quantity);
+    //   setcount(quantity);
+    setCart((items) => {
+      return items.map((i) => (i.sku === sku ? { ...i, quantity } : i));
+    });
+  }
   return (
     <>
       <div className="content">
@@ -32,7 +38,10 @@ export default function App() {
           <Routes>
             <Route path="/" element={<h1>Welcome to Carved Rock Fitness</h1>} />
             <Route path="/:category" element={<Products />} />
-            <Route path="/cart" element={<Cart cart={cart} />} />
+            <Route
+              path="/cart"
+              element={<Cart cart={cart} updateQuantity={updateQuantity} />}
+            />
             <Route
               path="/:category/:id"
               element={<Detail addToCart={addToCart} />}
