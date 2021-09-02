@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { CartContext } from "./cartComtext";
 import useFetchAll from "./services/useFetchAll";
 //import useFetchAll from "./services/useFetchAll";
 import Spinner from "./Spinner";
-export default function Cart({ cart, dispatch }) {
+
+export default function Cart() {
+  const { cart, dispatch } = useContext(CartContext);
   const navigate = useNavigate();
   const urls = cart.map((i) => `products/${i.id}`);
 
