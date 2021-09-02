@@ -79,6 +79,26 @@
       "city": "Тернопіль",
       "country": "China",
       "id": 4
+    },
+    {
+      "city": "cv",
+      "country": "United Kingdom",
+      "id": 5
+    },
+    {
+      "city": "Ternopil",
+      "country": "United Kingdom",
+      "id": 6
+    },
+    {
+      "city": "Ternopil",
+      "country": "China",
+      "id": 7
+    },
+    {
+      "city": "Ternopil",
+      "country": "China",
+      "id": 8
     }
   ]
 }

@@ -2,13 +2,15 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Cart from "./Cart";
-import Checkout from "./Checkout";
+import { useCart } from "./cartComtext";
+import Checkout from "./Checkout.class";
 import Detail from "./Detail";
 import Footer from "./Footer";
 import Header from "./Header";
 import Products from "./Products";
 
 export default function App() {
+  const { dispatch } = useCart();
   return (
     <>
       <div className="content">
@@ -19,7 +21,10 @@ export default function App() {
             <Route path="/:category" element={<Products />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/:category/:id" element={<Detail />} />
-            <Route path="/checkout" element={<Checkout />} />
+            <Route
+              path="/checkout"
+              element={<Checkout dispatch={dispatch} />}
+            />
           </Routes>
         </main>
       </div>
