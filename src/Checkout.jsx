@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useCart } from "./cartComtext";
 import { saveShippingAddress } from "./services/shippingService";
 const STATUS = {
   IDLE: "IDLE",
@@ -12,12 +13,12 @@ const emptyAddress = {
   country: "",
 };
 
-export default function Checkout({ cart, emptyCart, dispatch }) {
+export default function Checkout() {
   const [address, setAddress] = useState(emptyAddress);
   const [status, setStatus] = useState(STATUS.IDLE);
   const [saveError, setSaveError] = useState(null);
   const [touched, setTouched] = useState({});
-
+  const { dispatch } = useCart();
   //Derived state
   const errors = getError(address);
   const isValid = Object.keys(errors).length === 0;
