@@ -23,9 +23,8 @@ class Detail extends Component {
 
     // TODO: Display these products details
     return (
-      <Fetch
-        url={"products/" + id}
-        render={(product, loading, error) => {
+      <Fetch url={"products/" + id}>
+        {(product, loading, error) => {
           if (loading) return <Spinner />;
           if (!product) return <PageNotFound />;
           if (error) throw error;
@@ -64,7 +63,7 @@ class Detail extends Component {
             </div>
           );
         }}
-      />
+      </Fetch>
     );
   }
 }
