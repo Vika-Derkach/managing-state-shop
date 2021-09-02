@@ -104,6 +104,16 @@
       "city": "Ternopil",
       "country": "India",
       "id": 9
+    },
+    {
+      "city": "Ternopil",
+      "country": "India",
+      "id": 10
+    },
+    {
+      "city": "Ternopil",
+      "country": "China",
+      "id": 11
     }
   ]
 }
