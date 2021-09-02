@@ -34,3 +34,8 @@ const useFetch = (url) => {
   return { data, error, loading };
 };
 export default useFetch;
+
+export function Fetch({ url, render }) {
+  const { data, loading, error } = useFetch(url);
+  return render(data, loading, error);
+}
