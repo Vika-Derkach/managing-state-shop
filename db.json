@@ -74,6 +74,11 @@
       "city": "Ternopil",
       "country": "India",
       "id": 3
+    },
+    {
+      "city": "Тернопіль",
+      "country": "China",
+      "id": 4
     }
   ]
 }
