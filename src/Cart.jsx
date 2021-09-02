@@ -7,11 +7,7 @@ export default function Cart({ cart, updateQuantity }) {
   const navigate = useNavigate();
   const urls = cart.map((i) => `products/${i.id}`);
 
-  console.log(cart);
-
   const { data: products, loading, error } = useFetchAll(urls);
-
-  console.log("products", products);
 
   function renderItem(itemInCart) {
     const { id, sku, quantity } = itemInCart;
